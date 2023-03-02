@@ -1,6 +1,4 @@
-USE [master]
-GO
-/****** Object:  Database [OrdersDb]    Script Date: 3/2/2023 4:36:29 PM ******/
+/****** Object:  Database [OrdersDb]    Script Date: 3/2/2023 11:00:15 PM ******/
 CREATE DATABASE [OrdersDb]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -84,7 +82,7 @@ ALTER DATABASE [OrdersDb] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_
 GO
 USE [OrdersDb]
 GO
-/****** Object:  Table [dbo].[Clients]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  Table [dbo].[Clients]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +96,7 @@ CREATE TABLE [dbo].[Clients](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Order_groups]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  Table [dbo].[Order_groups]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +110,7 @@ CREATE TABLE [dbo].[Order_groups](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Orders]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  Table [dbo].[Orders]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -128,6 +126,41 @@ CREATE TABLE [dbo].[Orders](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET IDENTITY_INSERT [dbo].[Clients] ON 
+
+INSERT [dbo].[Clients] ([c_id], [c_fio]) VALUES (CAST(1 AS Numeric(5, 0)), N'Ivanov Ivan Ivanovich')
+INSERT [dbo].[Clients] ([c_id], [c_fio]) VALUES (CAST(2 AS Numeric(5, 0)), N'Sidorov Sidor Sidorovich')
+INSERT [dbo].[Clients] ([c_id], [c_fio]) VALUES (CAST(3 AS Numeric(5, 0)), N'Petrov Petr Petrovich')
+INSERT [dbo].[Clients] ([c_id], [c_fio]) VALUES (CAST(4 AS Numeric(5, 0)), N'??????? ???? ?????????')
+INSERT [dbo].[Clients] ([c_id], [c_fio]) VALUES (CAST(5 AS Numeric(5, 0)), N'??? ????? ????????????')
+SET IDENTITY_INSERT [dbo].[Clients] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Order_groups] ON 
+
+INSERT [dbo].[Order_groups] ([a_id], [a_name]) VALUES (CAST(1 AS Numeric(5, 0)), N'???????')
+INSERT [dbo].[Order_groups] ([a_id], [a_name]) VALUES (CAST(2 AS Numeric(5, 0)), N'??????')
+INSERT [dbo].[Order_groups] ([a_id], [a_name]) VALUES (CAST(3 AS Numeric(5, 0)), N'??????')
+INSERT [dbo].[Order_groups] ([a_id], [a_name]) VALUES (CAST(4 AS Numeric(5, 0)), N'????')
+INSERT [dbo].[Order_groups] ([a_id], [a_name]) VALUES (CAST(5 AS Numeric(5, 0)), N'???????')
+SET IDENTITY_INSERT [dbo].[Order_groups] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Orders] ON 
+
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(1 AS Numeric(5, 0)), CAST(N'2023-03-02T14:48:27.593' AS DateTime), CAST(2 AS Numeric(5, 0)), CAST(5 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(2 AS Numeric(5, 0)), CAST(N'2023-03-01T14:49:27.723' AS DateTime), CAST(2 AS Numeric(5, 0)), CAST(3 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(3 AS Numeric(5, 0)), CAST(N'2023-02-27T14:50:17.013' AS DateTime), CAST(3 AS Numeric(5, 0)), CAST(1 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(4 AS Numeric(5, 0)), CAST(N'2023-02-26T14:50:53.330' AS DateTime), CAST(1 AS Numeric(5, 0)), CAST(4 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(5 AS Numeric(5, 0)), CAST(N'2023-03-02T14:48:27.000' AS DateTime), CAST(4 AS Numeric(5, 0)), CAST(1 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(6 AS Numeric(5, 0)), CAST(N'2023-03-02T20:39:17.000' AS DateTime), CAST(5 AS Numeric(5, 0)), CAST(1 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(8 AS Numeric(5, 0)), CAST(N'2023-03-01T21:27:10.000' AS DateTime), CAST(5 AS Numeric(5, 0)), CAST(3 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(9 AS Numeric(5, 0)), CAST(N'2023-02-26T21:32:32.000' AS DateTime), CAST(5 AS Numeric(5, 0)), CAST(5 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(10 AS Numeric(5, 0)), CAST(N'2023-03-01T21:34:00.000' AS DateTime), CAST(4 AS Numeric(5, 0)), CAST(5 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(11 AS Numeric(5, 0)), CAST(N'2023-02-28T21:42:13.000' AS DateTime), CAST(4 AS Numeric(5, 0)), CAST(4 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(12 AS Numeric(5, 0)), CAST(N'2023-03-02T21:50:50.000' AS DateTime), CAST(1 AS Numeric(5, 0)), CAST(1 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(13 AS Numeric(5, 0)), CAST(N'2023-03-01T21:51:54.000' AS DateTime), CAST(2 AS Numeric(5, 0)), CAST(4 AS Numeric(5, 0)))
+INSERT [dbo].[Orders] ([o_id], [o_datetime], [o_client_id], [o_group_id]) VALUES (CAST(14 AS Numeric(5, 0)), CAST(N'2023-03-01T22:00:09.000' AS DateTime), CAST(4 AS Numeric(5, 0)), CAST(1 AS Numeric(5, 0)))
+SET IDENTITY_INSERT [dbo].[Orders] OFF
+GO
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD  CONSTRAINT [FK_Order_ArticulId] FOREIGN KEY([o_group_id])
 REFERENCES [dbo].[Order_groups] ([a_id])
 GO
@@ -138,7 +171,7 @@ REFERENCES [dbo].[Clients] ([c_id])
 GO
 ALTER TABLE [dbo].[Orders] CHECK CONSTRAINT [FK_Order_ClientId]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Articul_Orders]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_Articul_Orders]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,7 +187,7 @@ from Order_groups a
 
 group by a.a_id, a.a_name
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Client_Orders]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_Client_Orders]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -168,7 +201,7 @@ from Clients c
 	left join Orders o on o.o_client_id = c.c_id 
 group by c.c_id, c.c_fio 
 GO
-/****** Object:  StoredProcedure [dbo].[sp_Last_Month_Orders]    Script Date: 3/2/2023 4:36:30 PM ******/
+/****** Object:  StoredProcedure [dbo].[sp_Last_Month_Orders]    Script Date: 3/2/2023 11:00:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
