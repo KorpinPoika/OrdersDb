@@ -24,8 +24,10 @@ type
     OrderTableo_group_id: TIntegerField;
     OrderTablel_Client: TWideStringField;
     OrderTablel_Articul: TWideStringField;
+    ClientHasOrdersQuery: TADOQuery;
     procedure OrderTableNewRecord(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure ClientTableBeforeDelete(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -37,9 +39,25 @@ var
 
 implementation
 
+uses Dialogs;
+
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDataModule1.ClientTableBeforeDelete(DataSet: TDataSet);
+begin
+  ClientHasOrdersQuery.Parameters.ParamByName('ClientId').Value  := ClientTablec_id.Value;
+  ClientHasOrdersQuery.Open;
+
+  if ClientHasOrdersQuery.RecordCount > 0 then begin
+    ShowMessage('This client has some orders, so it cannot be deleted');
+    ClientHasOrdersQuery.Close;
+    Abort;
+  end;
+
+  ClientHasOrdersQuery.Close;
+end;
 
 procedure TDataModule1.DataModuleCreate(Sender: TObject);
 begin

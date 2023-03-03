@@ -94,6 +94,7 @@ object DataModule1: TDataModule1
   object ClientTable: TADOTable
     Connection = OrdersDbConnection
     CursorType = ctStatic
+    BeforeDelete = ClientTableBeforeDelete
     TableName = 'Clients'
     Left = 24
     Top = 128
@@ -106,5 +107,23 @@ object DataModule1: TDataModule1
       FieldName = 'c_fio'
       Size = 150
     end
+  end
+  object ClientHasOrdersQuery: TADOQuery
+    Connection = OrdersDbConnection
+    Parameters = <
+      item
+        Name = 'ClientId'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 5
+        Size = 19
+        Value = Null
+      end>
+    SQL.Strings = (
+      'select 1'
+      'from Orders'
+      'where o_client_id = :ClientId')
+    Left = 48
+    Top = 288
   end
 end
