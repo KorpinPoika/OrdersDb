@@ -3,7 +3,7 @@ object OrderEditor: TOrderEditor
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Order editor'
-  ClientHeight = 253
+  ClientHeight = 237
   ClientWidth = 248
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object OrderEditor: TOrderEditor
     Left = 8
     Top = 8
     Width = 233
-    Height = 209
+    Height = 193
     TabOrder = 0
     object Label1: TLabel
       Left = 16
@@ -41,15 +41,7 @@ object OrderEditor: TOrderEditor
       Top = 136
       Width = 30
       Height = 13
-      Caption = 'Artikul'
-    end
-    object DBText1: TDBText
-      Left = 104
-      Top = 8
-      Width = 65
-      Height = 17
-      DataField = 'o_id'
-      DataSource = DataModule1.OrderDataSource
+      Caption = 'Articul'
     end
     object Label4: TLabel
       Left = 16
@@ -58,25 +50,33 @@ object OrderEditor: TOrderEditor
       Height = 13
       Caption = 'Order N:'
     end
-    object DBLookupComboBox1: TDBLookupComboBox
+    object DBText1: TDBText
+      Left = 80
+      Top = 8
+      Width = 65
+      Height = 17
+      DataField = 'o_id'
+      DataSource = DataModule1.OrderQueryDataSource
+    end
+    object lookupClient: TDBLookupComboBox
       Left = 16
       Top = 109
       Width = 201
       Height = 21
       DataField = 'o_client_id'
-      DataSource = DataModule1.OrderDataSource
+      DataSource = DataModule1.OrderQueryDataSource
       KeyField = 'c_id'
       ListField = 'c_fio'
       ListSource = DataModule1.ClientDataSource
       TabOrder = 0
     end
-    object DBLookupComboBox2: TDBLookupComboBox
+    object lookupArticul: TDBLookupComboBox
       Left = 16
       Top = 155
       Width = 201
       Height = 21
-      DataField = 'o_group_id'
-      DataSource = DataModule1.OrderDataSource
+      DataField = 'o_articul_id'
+      DataSource = DataModule1.OrderQueryDataSource
       KeyField = 'a_id'
       ListField = 'a_name'
       ListSource = DataModule1.ArticulDataSource
@@ -94,24 +94,24 @@ object OrderEditor: TOrderEditor
       OnChange = OrderDateTimePickerChange
     end
   end
-  object BitBtn1: TBitBtn
+  object btnOk: TBitBtn
     Left = 85
-    Top = 223
+    Top = 207
     Width = 75
     Height = 25
     Kind = bkOK
     NumGlyphs = 2
     TabOrder = 1
-    OnClick = BitBtn1Click
+    OnClick = btnOkClick
   end
-  object BitBtn2: TBitBtn
+  object btnCancel: TBitBtn
     Left = 166
-    Top = 223
+    Top = 207
     Width = 75
     Height = 25
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 2
-    OnClick = BitBtn2Click
+    OnClick = btnCancelClick
   end
 end

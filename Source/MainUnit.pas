@@ -39,18 +39,13 @@ uses ClientEditorForm, OrderEditorForm;
 
 procedure TForm1.AddOrderActionExecute(Sender: TObject);
 begin
-  if DataModule1.OrderTable.State <> dsInsert then begin
-    DataModule1.OrderTable.Append;
-  end;
-
+  OrderEditor.EditorMode := TEditorMode.emInsert;
   OrderEditor.ShowModal;
 end;
 
 procedure TForm1.OrderEditActionExecute(Sender: TObject);
 begin
-  if DataModule1.OrderTable.State <> dsEdit
-  then DataModule1.OrderTable.Edit;
-
+  OrderEditor.EditorMode := TEditorMode.emEdit;
   OrderEditor.ShowModal;
 end;
 

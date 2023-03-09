@@ -16,7 +16,7 @@ object ClientEditor: TClientEditor
     281)
   PixelsPerInch = 96
   TextHeight = 13
-  object BitBtn1: TBitBtn
+  object btnClose: TBitBtn
     Left = 469
     Top = 248
     Width = 75
@@ -25,8 +25,6 @@ object ClientEditor: TClientEditor
     Kind = bkClose
     NumGlyphs = 2
     TabOrder = 0
-    ExplicitLeft = 552
-    ExplicitTop = 266
   end
   object DBNavigator1: TDBNavigator
     Left = 8
@@ -36,7 +34,6 @@ object ClientEditor: TClientEditor
     DataSource = DataModule1.ClientDataSource
     Anchors = [akLeft, akBottom]
     TabOrder = 1
-    ExplicitTop = 266
   end
   object DBGrid1: TDBGrid
     Left = 8
@@ -60,7 +57,13 @@ object ClientEditor: TClientEditor
     Columns = <
       item
         Expanded = False
+        FieldName = 'c_id'
+        Visible = False
+      end
+      item
+        Expanded = False
         FieldName = 'c_fio'
+        Title.Caption = 'Client Name'
         Visible = True
       end>
   end

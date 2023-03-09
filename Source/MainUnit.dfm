@@ -19,10 +19,10 @@ object Form1: TForm1
   object OrderDBNavigator: TDBNavigator
     Left = 8
     Top = 369
-    Width = 225
+    Width = 516
     Height = 25
-    DataSource = DataModule1.OrderDataSource
-    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbRefresh]
+    DataSource = DataModule1.OrderQueryDataSource
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast, nbInsert, nbDelete, nbEdit, nbPost, nbCancel, nbRefresh, nbApplyUpdates, nbCancelUpdates]
     Anchors = [akLeft, akBottom]
     TabOrder = 0
   end
@@ -32,13 +32,13 @@ object Form1: TForm1
     Width = 825
     Height = 334
     Anchors = [akLeft, akTop, akRight, akBottom]
-    DataSource = DataModule1.OrderDataSource
+    DataSource = DataModule1.OrderQueryDataSource
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
     Font.Name = 'Tahoma'
     Font.Style = []
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     ParentFont = False
     ReadOnly = True
     TabOrder = 1
@@ -50,17 +50,38 @@ object Form1: TForm1
     Columns = <
       item
         Expanded = False
+        FieldName = 'o_id'
+        Visible = False
+      end
+      item
+        Expanded = False
         FieldName = 'o_datetime'
+        Title.Caption = 'Order Date'
+        Width = 200
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'l_Client'
+        FieldName = 'o_client_id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'c_fio'
+        Title.Caption = 'Client'
+        Width = 250
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'l_Articul'
+        FieldName = 'o_articul_id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'a_name'
+        Title.Caption = 'Articul'
+        Width = 250
         Visible = True
       end>
   end
@@ -122,7 +143,7 @@ object Form1: TForm1
       OnExecute = AddOrderActionExecute
     end
     object OrderEditAction: TAction
-      Caption = 'EditOrderAction'
+      Caption = 'Edit Order'
       OnExecute = OrderEditActionExecute
     end
     object ClientEditAction: TAction

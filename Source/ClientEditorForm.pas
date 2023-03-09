@@ -9,7 +9,7 @@ uses
 
 type
   TClientEditor = class(TForm)
-    BitBtn1: TBitBtn;
+    btnClose: TBitBtn;
     DBNavigator1: TDBNavigator;
     DBGrid1: TDBGrid;
   private
